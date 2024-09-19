@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const premium_1 = require("../controllers/premium");
+const authenticate_1 = require("../middleware/authenticate");
+const router = (0, express_1.Router)();
+router.post('/payu', premium_1.payforPremium);
+router.post('/payu_response', premium_1.generateResponse);
+router.post('/success', premium_1.paymentSuccess);
+router.post('/failure', premium_1.paymentFailed);
+router.post("/add", authenticate_1.authenticate, premium_1.addPremium);
+exports.default = router;
